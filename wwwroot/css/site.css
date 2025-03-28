@@ -1,7 +1,22 @@
 html {
   font-size: 14px;
 }
-
+body {
+    margin-bottom: 60px;
+    background-image: url('../images/books.jpg');
+    background-size: contain;
+    color: black;
+}
+main {
+    background: linen;
+    opacity:.90;
+    border-radius:30px;
+    padding:40px;
+}
+footer{
+    background:black;
+    color:white;
+}
 @media (min-width: 768px) {
   html {
     font-size: 16px;
@@ -17,11 +32,6 @@ html {
   min-height: 100%;
 }
 
-body {
-  margin-bottom: 60px;
-  background:linen;
-  color:black;
-}
 img{
     border-radius:30px;
 }

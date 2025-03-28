@@ -1,13 +1,12 @@
 ﻿@page
-@model PDApp.Pages.PD.EditModel
+@model PDApp.Pages.ResourceSpots.EditModel
 
 @{
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<h1>Edit an Activity</h1>
 
-<h4>Resources</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -30,11 +29,13 @@
                 <span asp-validation-for="Resources.Author" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <span class="text-danger">*</span>
                 <label asp-for="Resources.Type" class="control-label"></label>
                 <input asp-for="Resources.Type" class="form-control" />
                 <span asp-validation-for="Resources.Type" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <span class="text-danger">*</span>
                 <label asp-for="Resources.Description" class="control-label"></label>
                 <input asp-for="Resources.Description" class="form-control" />
                 <span asp-validation-for="Resources.Description" class="text-danger"></span>
@@ -43,6 +44,11 @@
                 <label asp-for="Resources.Price" class="control-label"></label>
                 <input asp-for="Resources.Price" class="form-control" />
                 <span asp-validation-for="Resources.Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Resources.CategoryId" class="control-label"></label>
+                <select asp-for="Resources.CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
+                <span asp-validation-for="Resources.CategoryId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn" style="background:goldenrod;" />

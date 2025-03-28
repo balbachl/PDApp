@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using PDApp.Data;
 using PDApp.Models;
 
-namespace PDApp.Pages.ResourceSpots
+namespace PDApp.Pages.Categories
 {
     public class DeleteModel : PageModel
     {
@@ -20,7 +20,7 @@ namespace PDApp.Pages.ResourceSpots
         }
 
         [BindProperty]
-        public Resources Resources { get; set; } = default!;
+        public Category Category { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -29,15 +29,15 @@ namespace PDApp.Pages.ResourceSpots
                 return NotFound();
             }
 
-            var resources = await _context.Resources.FirstOrDefaultAsync(m => m.Id == id);
+            var category = await _context.Categories.FirstOrDefaultAsync(m => m.Id == id);
 
-            if (resources == null)
+            if (category == null)
             {
                 return NotFound();
             }
             else
             {
-                Resources = resources;
+                Category = category;
             }
             return Page();
         }
@@ -49,11 +49,11 @@ namespace PDApp.Pages.ResourceSpots
                 return NotFound();
             }
 
-            var resources = await _context.Resources.FindAsync(id);
-            if (resources != null)
+            var category = await _context.Categories.FindAsync(id);
+            if (category != null)
             {
-                Resources = resources;
-                _context.Resources.Remove(Resources);
+                Category = category;
+                _context.Categories.Remove(Category);
                 await _context.SaveChangesAsync();
             }
 

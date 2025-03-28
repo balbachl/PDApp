@@ -12,7 +12,6 @@ namespace PDApp.Models
         public int Id { get; set; }
 
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime Date { get; set; }
 
         [StringLength(60)]
@@ -33,6 +32,10 @@ namespace PDApp.Models
         [DataType(DataType.Currency)]
         [Column(TypeName = "decimal(18, 2)")]
         public decimal Price { get; set; } = 0;
-     
+
+        // Foreign key
+        public int CategoryId { get; set; }
+        public Category? Category { get; set; }
+
     }
 }

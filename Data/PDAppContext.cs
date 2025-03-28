@@ -15,5 +15,6 @@ namespace PDApp.Data
         }
 
         public DbSet<PDApp.Models.Resources> Resources { get; set; } = default!;
+        public DbSet<PDApp.Models.Category> Categories { get; set; } = default!;
     }
 }

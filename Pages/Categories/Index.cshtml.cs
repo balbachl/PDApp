@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using PDApp.Data;
 using PDApp.Models;
 
-namespace PDApp.Pages.ResourceSpots
+namespace PDApp.Pages.Categories
 {
     public class IndexModel : PageModel
     {
@@ -19,12 +19,11 @@ namespace PDApp.Pages.ResourceSpots
             _context = context;
         }
 
-        public IList<Resources> Resources { get;set; } = default!;
+        public IList<Category> Category { get;set; } = default!;
 
         public async Task OnGetAsync()
         {
-            Resources = await _context.Resources
-                .Include(r => r.Category).ToListAsync();
+            Category = await _context.Categories.ToListAsync();
         }
     }
 }

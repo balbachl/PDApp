@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using PDApp.Data;
 using PDApp.Models;
 
-namespace PDApp.Pages.ResourceSpots
+namespace PDApp.Pages.Categories
 {
     public class CreateModel : PageModel
     {
@@ -21,12 +21,11 @@ namespace PDApp.Pages.ResourceSpots
 
         public IActionResult OnGet()
         {
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Id");
             return Page();
         }
 
         [BindProperty]
-        public Resources Resources { get; set; } = default!;
+        public Category Category { get; set; } = default!;
 
         // For more information, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
@@ -36,7 +35,7 @@ namespace PDApp.Pages.ResourceSpots
                 return Page();
             }
 
-            _context.Resources.Add(Resources);
+            _context.Categories.Add(Category);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

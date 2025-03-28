@@ -1,16 +1,16 @@
 ﻿@page
-@model PDApp.Pages.PD.IndexModel
+@model PDApp.Pages.ResourceSpots.IndexModel
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>PD Activity List</h1>
 
 <p>
-    <a asp-page="Create">Create New</a>
+    <a asp-page="Create">Create</a>
 </p>
-<table class="table">
+<table class="table table-hover w-auto">
     <thead>
         <tr>
             <th>
@@ -31,31 +31,36 @@
             <th>
                 @Html.DisplayNameFor(model => model.Resources[0].Price)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Resources[0].Category)
+            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model.Resources)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Date)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Title)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Author)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Type)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Price)
-                </td>
+@foreach (var item in Model.Resources) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Author)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.Name)
+            </td>
             </tr>
             <tr>
                 <td colspan="6">
@@ -65,6 +70,6 @@
                     <hr />
                 </td>
             </tr>
-        }
+}
     </tbody>
 </table>

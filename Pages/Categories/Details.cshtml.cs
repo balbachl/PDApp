@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using PDApp.Data;
 using PDApp.Models;
 
-namespace PDApp.Pages.ResourceSpots
+namespace PDApp.Pages.Categories
 {
     public class DetailsModel : PageModel
     {
@@ -19,7 +19,7 @@ namespace PDApp.Pages.ResourceSpots
             _context = context;
         }
 
-        public Resources Resources { get; set; } = default!;
+        public Category Category { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -28,14 +28,14 @@ namespace PDApp.Pages.ResourceSpots
                 return NotFound();
             }
 
-            var resources = await _context.Resources.FirstOrDefaultAsync(m => m.Id == id);
-            if (resources == null)
+            var category = await _context.Categories.FirstOrDefaultAsync(m => m.Id == id);
+            if (category == null)
             {
                 return NotFound();
             }
             else
             {
-                Resources = resources;
+                Category = category;
             }
             return Page();
         }

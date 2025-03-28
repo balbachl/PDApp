@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using PDApp.Data;
 using PDApp.Models;
 
-namespace PDApp.Pages.ResourceSpots
+namespace PDApp.Pages.Categories
 {
     public class EditModel : PageModel
     {
@@ -21,7 +21,7 @@ namespace PDApp.Pages.ResourceSpots
         }
 
         [BindProperty]
-        public Resources Resources { get; set; } = default!;
+        public Category Category { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -30,13 +30,12 @@ namespace PDApp.Pages.ResourceSpots
                 return NotFound();
             }
 
-            var resources =  await _context.Resources.FirstOrDefaultAsync(m => m.Id == id);
-            if (resources == null)
+            var category =  await _context.Categories.FirstOrDefaultAsync(m => m.Id == id);
+            if (category == null)
             {
                 return NotFound();
             }
-            Resources = resources;
-           ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Id");
+            Category = category;
             return Page();
         }
 
@@ -49,7 +48,7 @@ namespace PDApp.Pages.ResourceSpots
                 return Page();
             }
 
-            _context.Attach(Resources).State = EntityState.Modified;
+            _context.Attach(Category).State = EntityState.Modified;
 
             try
             {
@@ -57,7 +56,7 @@ namespace PDApp.Pages.ResourceSpots
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ResourcesExists(Resources.Id))
+                if (!CategoryExists(Category.Id))
                 {
                     return NotFound();
                 }
@@ -70,9 +69,9 @@ namespace PDApp.Pages.ResourceSpots
             return RedirectToPage("./Index");
         }
 
-        private bool ResourcesExists(int id)
+        private bool CategoryExists(int id)
         {
-            return _context.Resources.Any(e => e.Id == id);
+            return _context.Categories.Any(e => e.Id == id);
         }
     }
 }
